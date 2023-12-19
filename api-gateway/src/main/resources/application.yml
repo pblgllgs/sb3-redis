@@ -11,11 +11,11 @@ spring:
         - id: product-service
           uri: lb://product-service/
           predicates:
-            - Path=/api/v1/products/**
+            - Path=/api/1.0/product/**
         - id: product-cache-service
           uri: lb://product-cache-service/
           predicates:
-            - Path=/api/v1/product-cache/**
+            - Path=/api/1.0/product-cache/**
 
 info:
   component: Zuul Edge Server

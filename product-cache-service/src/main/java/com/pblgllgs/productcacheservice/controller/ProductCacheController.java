@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/api/v1/product-cache")
+@RequestMapping("/api/1.0/product-cache")
 public class ProductCacheController {
 
     private final ProductRepositoryService productRepositoryService;

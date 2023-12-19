@@ -9,7 +9,9 @@ info:
 ---
 
 spring:
-  profiles: localhost
+  config:
+    activate:
+      on-profile: localhost
   cloud:
     config:
       server:
@@ -24,7 +26,9 @@ server:
 ---
 
 spring:
-  profiles: stage
+  config:
+    activate:
+      on-profile: stage
   cloud:
     config:
       server:

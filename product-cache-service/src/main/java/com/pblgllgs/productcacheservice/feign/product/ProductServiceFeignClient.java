@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("${feign.product-service.name}")
 public interface ProductServiceFeignClient {
 
-    @GetMapping(value = "/api/v1/products/{language}/product-id/{productId}")
+    @GetMapping(value = "/api/1.0/product/{language}/product-id/{productId}")
     InternalApiResponse<ProductResponse> getProductById(
             @PathVariable("language") Language language,
             @PathVariable("productId") Long productId

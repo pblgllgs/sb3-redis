@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/1.0/product")
 public class ProductController {
 
     private final IProductRepositoryService iProductRepositoryService;
