@@ -16,7 +16,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rabiayurdakul/stockmanagement-configs.git
+          uri: https://github.com/pblgllgs/stockmanagement-configs.git
 logging:
   level:
     root: debug
@@ -33,7 +33,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rabiayurdakul/stockmanagement-configs.git
+          uri: https://github.com/pblgllgs/stockmanagement-configs.git
 logging:
   level:
     root: debug
