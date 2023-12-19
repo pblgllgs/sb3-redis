@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: localhost
+
+---
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    activate:
+      on-profile: localhost
+
+eureka:
+  instance:
+    appname: eureka-server
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      default-zone: http://{eureka.instance.hostname}:${server.port}/eureka
+
+server:
+  port: 8761
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: stage
+  cloud:
+    config:
+      uri: http://config-server:8888
+
+eureka:
+  instance:
+    appname: eureka-server
+    hostname: eureka-server
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      default-zone: http://{eureka.instance.hostname}:${server.port}/eureka
+
+server:
+  port: 8761

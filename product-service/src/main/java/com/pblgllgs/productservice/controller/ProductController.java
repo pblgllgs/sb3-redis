@@ -10,11 +10,10 @@ import com.pblgllgs.productservice.response.FriendlyMessage;
 import com.pblgllgs.productservice.response.InternalApiResponse;
 import com.pblgllgs.productservice.response.ProductResponse;
 import com.pblgllgs.productservice.service.IProductRepositoryService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public class ProductController {
 
     private final IProductRepositoryService iProductRepositoryService;
 
-    @ApiOperation(value = "Save all product")
+    @Operation(description = "Save all product")
     @PostMapping("/{language}/create")
     @ResponseStatus(HttpStatus.CREATED)
     public InternalApiResponse<ProductResponse> createProduct(
@@ -56,7 +55,7 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(value = "Get all products")
+    @Operation(description = "Get all products")
     @GetMapping("/{language}/product-id/{productId}")
     @ResponseStatus(HttpStatus.OK)
     public InternalApiResponse<ProductResponse> findProductById(
@@ -74,14 +73,14 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(value = "Update product by id")
+    @Operation(description = "Update product by id")
     @PutMapping("/{language}/product-id/{productId}")
     @ResponseStatus(HttpStatus.OK)
     public InternalApiResponse<ProductResponse> updateProductById(
             @PathVariable("language") Language language,
             @PathVariable("productId") Long productId,
             @RequestBody ProductUpdateRequest productUpdateRequest
-            ) {
+    ) {
         log.debug("[{}][updateProduct] -> request update product with id: {}", this.getClass().getSimpleName(), productId);
         Product product = iProductRepositoryService.getProduct(language, productId);
         Product productUpdated = iProductRepositoryService.updateProduct(language, product.getProductId(), productUpdateRequest);
@@ -98,7 +97,7 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(value = "Get all products")
+    @Operation(description = "Get all products")
     @GetMapping("/{language}")
     @ResponseStatus(HttpStatus.OK)
     public InternalApiResponse<List<ProductResponse>> findAllProducts(
@@ -115,7 +114,7 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(value = "Delete product by id")
+    @Operation(description = "Delete product by id")
     @DeleteMapping("/{language}/product-id/{productId}")
     @ResponseStatus(HttpStatus.OK)
     public InternalApiResponse<ProductResponse> deleteProductById(
@@ -149,7 +148,7 @@ public class ProductController {
                 .build();
     }
 
-    private static List<ProductResponse> getProductsResponse(List<Product> products){
+    private static List<ProductResponse> getProductsResponse(List<Product> products) {
         return products
                 .stream()
                 .map(ProductController::getProductResponse)
